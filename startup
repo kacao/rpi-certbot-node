@@ -13,7 +13,7 @@ fi
 if [ ! -d "/etc/letsencrypt/live/${CERT_DOMAIN}" ]
 then
   echo "Obtaining certificates on the first run"
-  certbot certonly --standalone --agree-tos --test-cert -n\
+  certbot certonly --standalone --agree-tos -n\
       -m $CERT_EMAIL \
       -d $CERT_DOMAIN
 fi
