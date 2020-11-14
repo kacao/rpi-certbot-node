@@ -1,0 +1,1 @@
+43 6 * * * certbot renew --pre-hook "pm2-runtime stop app" --post-hook "pm2-runtime start app"
