@@ -1,2 +1,2 @@
-# rpit-certbot-node
+# rpi-certbot-node
 Docker image with Certbot and Nodejs
