@@ -1,21 +1,22 @@
 #!/bin/bash
 
-function bad_email() {
-  regex="^([A-Za-z]+[A-Za-z0-9]*((\.|\-|\_)?[A-Za-z]+[A-Za-z0-9]*){1,})@(([A-Za-z]+[A-Za-z0-9]*)+((\.|\-|\_)?([A-Za-z]+[A-Za-z0-9]*)+){1,})+\.([A-Za-z]{2,})+$"
-  ! [[ "${1}" =~ $regex ]]
-}
+#function bad_email() {
+#  regex="^([A-Za-z]+[A-Za-z0-9]*((\.|\-|\_)?[A-Za-z]+[A-Za-z0-9]*){1,})@(([A-Za-z]+[A-Za-z0-9]*)+((\.|\-|\_)?([A-Za-z]+[A-Za-z0-9]*)+){1,})+\.([A-Za-z]{2,})+$"
+#  ! [[ "${1}" =~ $regex ]]
+#}
 
-if bad_email $CERT_EMAIL; then
-  echo "Invalid cert email ${CERT_EMAIL}"
-  exit 1
-fi
+#if bad_email $CERT_EMAIL; then
+#  echo "Invalid cert email ${CERT_EMAIL}"
+#  exit 1
+#fi
 
-if [ ! -d "/etc/letsencrypt/live/${CERT_DOMAIN}" ]
-then
-  echo "Obtaining certificates on the first run"
-  certbot certonly --standalone --agree-tos -n\
-      -m $CERT_EMAIL \
-      -d $CERT_DOMAIN
-fi
+#if [ ! -d "/etc/letsencrypt/live/${CERT_DOMAIN}" ]
+#then
+#  echo "Obtaining certificates on the first run"
+#  certbot certonly --standalone --agree-tos -n\
+#      -m $CERT_EMAIL \
+#      -d $CERT_DOMAIN
+#fi
 
+cd /app
 exec pm2-runtime /app/$APP_ENTRY

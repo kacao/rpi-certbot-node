@@ -1,4 +1,6 @@
 # rpi-certbot-node
+[deprecated]
+
 Docker image with Certbot and Nodejs for arm32v7 (Raspberry Pi)
 
 Example:
